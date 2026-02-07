@@ -250,9 +250,9 @@
         .close-book-circle:hover { transform: scale(1.1) rotate(90deg); background: var(--hot-pink); color: white; }
 
         /* --- Cake Section --- */
-        #cake-section { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 5000; display: none; justify-content: center; align-items: center; opacity: 0; transition: 0.5s; background: radial-gradient(circle, var(--soft-blue), #82c6e8); flex-direction: column; pointer-events: none; }
+        #cake-section { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 5000; display: flex; justify-content: center; align-items: center; opacity: 0; transition: 0.5s; background: radial-gradient(circle, var(--soft-blue), #82c6e8); flex-direction: column; pointer-events: none; }
         #cake-section.active { pointer-events: all; display: flex; }
-        #emoji-cake { font-size: 180px; cursor: pointer; }
+        #emoji-cake { font-size: 300px; cursor: pointer; }
         .vertical-strip { writing-mode: vertical-rl; text-orientation: mixed; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC'; font-size: 0.8rem; letter-spacing: 5px; color: rgba(255,255,255,0.6); border-right: 1px solid rgba(255,255,255,0.3); white-space: nowrap; }
         /* --- Floating Bow Decor --- */
 .bow-decor {
@@ -623,4 +623,5 @@
         font-size: 80px;
     }
 }
+
 
