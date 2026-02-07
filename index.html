@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD DEVANSHI ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Bowlby+One+SC&family=Montserrat:wght@400;700;900&family=Homemade+Apple&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="overlay">
+        <div class="enter-card">
+            <p style="color: #888; letter-spacing: 2px;">FEB 08</p>
+            <h2 style="font-family: 'Dancing Script'; font-size: 2.5rem; color: #444;">Bonjour, Devanshi.</h2>
+            <button id="enter-btn" onclick="startApp()">POUR TOI ✨</button>
+        </div>
+    </div>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
+
+    <audio id="myAudio" loop><source src="s4e16._Vance_Joy_-_Riptide_(mp3.pm).mp3" type="audio/mpeg"></audio>
+
+    <div class="magazine-grid">
+        <div class="photo-stack">
+            <p class="header-label">FOR DEVANSHI</p>
+            <div class="mini-post" style="transform: rotate(-4deg);"><img src="WhatsApp Image 2026-02-04 at 9.18.10 PM.jpeg"></div>
+            <div class="mini-post" style="transform: rotate(3deg);"><img src="WhatsApp Image 2026-02-04 at 9.18.09 PM.jpeg"></div>
+            <div class="mini-post" style="transform: rotate(-2deg);"><img src="WhatsApp Image 2026-02-04 at 9.18.09 PM (1).jpeg"></div>
+
+            <div class="spotify-mini">
+                <div class="player-top">
+                    <div class="album-art"><img src="e049356f01d65badde60048045cb33c7.jpg"></div>
+                    <div class="song-details"><p class="song-title">Riptide</p><p class="artist-name">Vance Joy</p></div>
+                </div>
+                <div class="controls">
+                    <div class="main-ctrls">
+                        <button id="play-btn" onclick="togglePlay()">▶</button>
+                        <div class="volume-box"><input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" oninput="changeVolume(this.value)"></div>
+                    </div>
+                    <div class="playback-bar"><div class="progress" id="musicBar"></div></div>
+                </div>
+            </div>
+
+            <div class="exchange-card">
+                <p style="font-family: 'Bowlby One SC'; font-size: 0.6rem; letter-spacing: 2px; color: #888; margin: 0;">PROCHAIN ARRÊT: PARIS 🇫🇷</p>
+                <div id="countdown">00d 00h 00m 00s</div>
+                <p style="font-family: 'Dancing Script'; font-size: 1rem; color: var(--hot-pink); margin: 0;">March 20th, 2026</p>
+            </div>
+
+            <div class="attribute-list">
+                <h3>15 WAYS TO DESCRIBE DEVANSHI</h3>
+                <div class="attribute-item"><span class="attr-num">01</span> Cute</div>
+                <div class="attribute-item"><span class="attr-num">02</span> Bully</div>
+                <div class="attribute-item"><span class="attr-num">03</span> Smart</div>
+                <div class="attribute-item"><span class="attr-num">04</span> Talented Dancer</div>
+                <div class="attribute-item"><span class="attr-num">05</span> Great Poet</div>
+                <div class="attribute-item"><span class="attr-num">06</span> Gorgeous</div>
+                <div class="attribute-item"><span class="attr-num">07</span> Kind</div>
+                <div class="attribute-item"><span class="attr-num">08</span> Caring</div>
+                <div class="attribute-item"><span class="attr-num">09</span> Funny</div>
+                <div class="attribute-item"><span class="attr-num">10</span> Open-minded</div>
+                <div class="attribute-item"><span class="attr-num">11</span> Independent</div>
+                <div class="attribute-item"><span class="attr-num">12</span> Hella Strong</div>
+                <div class="attribute-item"><span class="attr-num">13</span> Very Creative</div>
+                <div class="attribute-item"><span class="attr-num">14</span> Free Spirited</div>
+                <div class="attribute-item"><span class="attr-num">15</span> Energetic</div>
+            </div>
+        </div>
+
+        <div class="vertical-strip">HAPPY BIRTHDAY DEVANSHI • 08/02/2026 • HAPPY BIRTHDAY DEVANSHI • 08/02/2026 • HAPPY BIRTHDAY DEVANSHI • 08/02/2026 • HAPPY BIRTHDAY DEVANSHI • 08/02/2026 • HAPPY BIRTHDAY DEVANSHI </div>
+
+        <div class="main-content">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=800" class="hero-img">
+            <div style="margin-bottom: 45px;">
+                <p style="font-family: 'Bowlby One SC'; font-size: 1.2rem; letter-spacing: 5px; margin: 0; color: white; text-shadow: 2px 2px 0px var(--hot-pink); opacity: 0.9;">HAPPY 15TH BIRTHDAY</p>
+                <h1 style="margin-top: -5px;">DEVANSHI</h1>
+                <p style="font-family: 'Dancing Script'; font-size: 1.8rem; margin: 5px 0 0 5px; color: var(--creamy-white); letter-spacing: 1px;">Hope your day and year ahead, goes as fun you are :) You deserve it.</p>
+            </div>
+
+            <div class="newspaper-article">
+                <div class="news-meta-top"><span>CHAND GAZETTE</span><span>SUNDAY, FEBRUARY 8, 2026</span></div>
+                <div class="news-header-main"><h2>The Birthday Times</h2></div>
+                <div class="news-meta-sub"><span>LATE CITY EDITION</span><span>VOL. XV ... NO. 08</span><span>ONE WISH</span></div>
+                <div class="news-grid">
+                    <div class="news-text">
+                        <h3>RENOWNED POET DEVANSHI TURNS 15; CITY CELEBRATES!</h3>
+                        <p><b>DELHI, IN</b> In today's special edition, we are thrilled to bring this news to everyone, the very important and special occasion of Devanshi's FIFTEENTH Birthday- a day of thanking the presence of this beautiful, smart, fun soul that brightens everyone's day. This event marks another milestone and a great year passed, filled with personal growth, achieved dreams, bright smiles and overcome fears.</p>
+                    </div>
+                    <div><img src="unnamed (4).jpg"></div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="mag-btn" onclick="openLetter()">READ LETTER ✉️</button>
+                <button class="mag-btn" style="background: var(--news-blue); color: white;" onclick="openBooklet()">YOUR WORKS 📖</button>
+                <button class="mag-btn" style="background: var(--soft-blue); color: #444;" onclick="showCake()">CUT CAKE 🎂</button>
+            </div>
+
+            <div class="poetry-box">
+                <h3>POETRY CORNER ✍️</h3>
+                <div id="poem-display">Click for a piece of soul...</div>
+                <button class="gen-btn" id="poem-trigger" onclick="generatePoem()">NEW INSPIRATION</button>
+            </div>
+
+            <div class="polaroid-pinned">
+                <div class="thumbtack"></div>
+                <img src="WhatsApp Image 2026-02-06 at 3.02.17 PM.jpeg">
+            </div>
+
+            <div class="decor-cluster">
+                <div class="paris-stamp"><p style="margin: 5px 0 0 0;">PARIS AIR MAIL<br>08.02.26</p></div>
+                <div class="sticky-note">"Grow through what you go through." 🦋</div>
+                <p class="header-label" style="margin-top: 10px;">FROM CHANDRAVADAN</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="letter-page">
+        <div class="paper">
+            <div class="letter-content">
+                Dear Devanshi,<br><br>
+                Happy Birthday!<br><br>
+                You’re turning 15 this year, which is kind of crazy, but in a good way. I know boards are right around the corner, but today should still 100% feel like your day. Even if it’s just for a bit, I hope you let yourself enjoy it and not overthink everything else.<br><br>
+                I actually wanted to give you something on your actual birthday, but since we aren’t meeting today, that wasn’t really possible. So I ended up making this instead. I just wanted it to be something different, something you could look at now and still feel excited about later, after boards are done.<br><br>
+                I didn’t want to write the usual birthday stuff because that never really fits you. You have this way of being very much yourself without trying too hard, even when things are hectic. It’s subtle, but it makes a difference. You probably don’t notice it much, but it’s the kind of thing that makes everything around you feel a little lighter for you and for the people around you.<br><br>
+                I know I can’t give you the golden retriever in a Coach bag today or that cow-looking ice-cream cup, but I haven’t forgotten about those. One day, that’s happening for sure.<br><br>
+                There’s also a small booklet on the website under “Your Works.” I’m not even sure why I felt like adding it, but it felt right. Your older creations are genuinely some of my favourites, and I thought they deserved their own space.<br><br>
+                Anyway, I just wanted you to know that I’m glad I met you. And if this year ever feels messy or overwhelming, you don’t have to deal with it alone. I’ve got your back, always.<br><br>
+                Hope you have a really good day. You deserve that.<br><br>
+                Love,<br>
+                Chandravadan
+            </div>
+            <button class="mag-btn" onclick="closeLetter()">CLOSE ✕</button>
+        </div>
+    </div>
+
+    <div id="booklet-page">
+        <div class="book-container">
+            <div class="close-book-circle" onclick="closeBooklet()">✕</div>
+            <div class="book-left">
+                <div class="book-title">ECLIPSES</div>
+                <div style="font-family: 'Dancing Script'; font-size: 1.5rem; color: var(--pastel-pink);">A Collection by Devanshi</div>
+                <div style="margin-top: 30px; font-weight: 900; letter-spacing: 5px; font-size: 0.7rem; opacity: 0.6;">POETRY VOL. XV</div>
+            </div>
+            <div class="book-right">
+                <div class="book-body" id="book-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cake-section">
+        <div class="cake-wrap">
+            <h1 style="font-family: 'Bowlby One SC'; color: white;">MAKE A WISH!</h1>
+            <div id="emoji-cake" onclick="cutCake()">🎂</div>
+            <button class="mag-btn" style="margin-top: 40px;" onclick="closeCake()">EXIT PARTY</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

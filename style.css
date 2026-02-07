@@ -1,0 +1,626 @@
+        :root {
+            --hot-pink: #FF66AA;
+            --soft-blue: #A9DEF9;
+            --deep-pink: #D63384;
+            --creamy-white: #fdfcfb;
+            --parchment: #fdf5e6;
+            --tape-color: rgba(255, 255, 255, 0.5);
+            --spotify-green: #1DB954;
+            --news-paper: #f4f1ea;
+            --news-blue: #2c5d8a;
+            --pastel-pink: #FFC1D6;
+            --bright-blue: #48CAE4; 
+        }
+
+        /* --- Custom Scrollbars --- */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); }
+        ::-webkit-scrollbar-thumb { 
+            background: var(--bright-blue); 
+            border-radius: 10px; 
+            border: 3px solid rgba(255, 255, 255, 0.2); 
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #0096C7; }
+
+        #letter-page .paper::-webkit-scrollbar, 
+        #booklet-page .book-body::-webkit-scrollbar { width: 8px; }
+        #letter-page .paper::-webkit-scrollbar-track,
+        #booklet-page .book-body::-webkit-scrollbar-track { background: var(--parchment); }
+        #letter-page .paper::-webkit-scrollbar-thumb,
+        #booklet-page .book-body::-webkit-scrollbar-thumb { 
+            background: var(--soft-blue); 
+            border-radius: 10px; 
+        }
+
+        * { cursor: none !important; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0; padding: 0;
+            background: linear-gradient(180deg, #A9DEF9 0%, #FFB3D1 50%, #FF85B3 100%);
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* --- Entry Screen --- */
+        #overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--creamy-white); z-index: 5000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+            pointer-events: all;
+        }
+
+        .enter-card {
+            background: white; padding: 30px; border-radius: 15px;
+            box-shadow: 10px 10px 0px var(--soft-blue); text-align: center;
+            border: 2px solid #eee;
+        }
+
+        #enter-btn {
+            background: var(--hot-pink); border: none; padding: 15px 40px;
+            font-family: 'Bowlby One SC', cursive; font-size: 1.2rem;
+            color: white; border-radius: 10px; margin-top: 20px;
+            box-shadow: 5px 5px 0px var(--deep-pink); 
+            transition: all 0.3s ease;
+            pointer-events: all;
+            position: relative;
+        }
+
+        #enter-btn:hover {
+            transform: translateY(-3px);
+            background: var(--deep-pink);
+            box-shadow: 8px 8px 0px var(--hot-pink);
+        }
+
+        /* --- Cursor --- */
+        #cursor-dot { width: 12px; height: 12px; background: var(--hot-pink); position: fixed; border-radius: 50%; z-index: 9999; pointer-events: none; border: 2px solid white; will-change: transform; top: 0; left: 0;}
+        #cursor-outline { width: 40px; height: 40px; border: 3px solid white; position: fixed; border-radius: 12px; z-index: 9998; pointer-events: none; transform: rotate(15deg); will-change: transform; top: 0; left: 0;}
+
+        /* --- Layout --- */
+        .magazine-grid {
+            display: grid;
+            grid-template-columns: 1fr 50px 1.5fr;
+            max-width: 1300px;
+            margin: 0 auto;
+            min-height: 100vh;
+            border-left: 1px solid rgba(255,255,255,0.3);
+            border-right: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .photo-stack { 
+            padding: 50px; 
+            border-right: 1px solid rgba(255,255,255,0.3); 
+            display: flex;
+            flex-direction: column;
+            gap: 40px; 
+        }
+        
+        .mini-post { 
+            background: white; padding: 12px; position: relative;
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.1); will-change: transform;
+            transition: transform 0.3s ease;
+        }
+
+        .mini-post::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 30px;
+            background: var(--tape-color);
+            backdrop-filter: blur(1px);
+            z-index: 2;
+        }
+
+        .mini-post img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+
+        .header-label { font-size: 0.75rem; letter-spacing: 3px; color: #444; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
+
+        /* --- Spotify Player --- */
+        .spotify-mini {
+            background: #000000; padding: 20px; border-radius: 20px; width: 260px; margin-top: 10px;
+            transform: rotate(-1deg); box-shadow: 0 10px 30px rgba(0,0,0,0.4); pointer-events: all !important;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 2px solid #121212;
+        }
+        .spotify-mini:hover { transform: rotate(0deg) scale(1.03); box-shadow: 0 0 20px rgba(29, 185, 84, 0.3); border-color: var(--spotify-green); }
+        .player-top { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; }
+        .album-art { width: 60px; height: 60px; border-radius: 8px; flex-shrink: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); }
+        .album-art img { width: 100%; height: 100%; object-fit: cover; }
+        .song-details { flex-grow: 1; overflow: hidden; }
+        .song-title { font-weight: 900; font-size: 0.9rem; color: #fff; margin: 0; letter-spacing: 0.5px; }
+        .artist-name { font-size: 0.75rem; color: var(--spotify-green); font-weight: 600; margin: 4px 0 0; }
+        .controls { display: flex; flex-direction: column; gap: 12px; }
+        .main-ctrls { display: flex; align-items: center; gap: 12px; }
+        #play-btn { background: var(--spotify-green); border: none; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; font-size: 1rem; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(29, 185, 84, 0.4); }
+        #play-btn:hover { transform: scale(1.15); background: #1ed760; }
+        .volume-box { display: flex; align-items: center; gap: 10px; flex-grow: 1; }
+        input[type="range"] { flex-grow: 1; -webkit-appearance: none; background: #333; height: 5px; border-radius: 10px; outline: none; }
+        input[type="range"]::-webkit-slider-runnable-track { background: linear-gradient(to right, var(--spotify-green) var(--volume-percent, 100%), #333 var(--volume-percent, 100%)); height: 5px; border-radius: 10px; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; height: 12px; width: 12px; background: white; border-radius: 50%; margin-top: -3.5px; box-shadow: 0 0 5px rgba(0,0,0,0.5); }
+        .playback-bar { width: 100%; height: 5px; background: #333; border-radius: 10px; overflow: hidden; }
+        .progress { width: 0%; height: 100%; background: var(--spotify-green); box-shadow: 0 0 10px var(--spotify-green); }
+
+        /* --- Exchange Countdown Card --- */
+        .exchange-card {
+            background: white; padding: 20px; border-radius: 15px; width: 260px;
+            box-shadow: 10px 10px 0 var(--soft-blue); border: 2px solid #f0f0f0;
+            transform: rotate(1deg); margin-top: 20px; text-align: center;
+        }
+
+        #countdown {
+            font-family: 'Bowlby One SC'; font-size: 1.4rem; color: #444;
+            margin: 10px 0; letter-spacing: -1px;
+        }
+
+        /* --- Attribute List --- */
+        .attribute-list {
+            background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px);
+            padding: 25px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.3);
+            margin-top: 10px; position: relative; box-shadow: 5px 5px 15px rgba(0,0,0,0.05); width: 260px;
+        }
+        .attribute-list::before { content: ""; position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-1deg); width: 100px; height: 30px; background: var(--tape-color); z-index: 2; }
+        .attribute-list h3 { font-family: 'Bowlby One SC'; font-size: 0.9rem; color: white; margin-bottom: 15px; text-align: center; text-shadow: 2px 2px 0px var(--hot-pink); letter-spacing: 1px; }
+        .attribute-item { font-family: 'Montserrat'; font-size: 0.75rem; font-weight: 700; margin-bottom: 8px; display: flex; gap: 10px; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4px; }
+        .attr-num { color: var(--hot-pink); font-family: 'Bowlby One SC'; }
+
+        /* --- Main Content --- */
+        .main-content { padding: 60px; text-align: left; position: relative; padding-bottom: 400px; }
+        .hero-img { width: 100%; border: 15px solid white; box-shadow: 15px 15px 0 var(--hot-pink); margin-bottom: 40px; }
+        h1 { font-family: 'Bowlby One SC'; font-size: clamp(3.5rem, 9vw, 6.5rem); margin: 0; line-height: 1; text-shadow: 6px 6px 0 var(--hot-pink); }
+        
+        .newspaper-article {
+            background-color: #f9f7f1; background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            color: #1a1a1a; padding: 40px; margin: 30px 0; box-shadow: 12px 12px 0 rgba(0,0,0,0.15); border: 1px solid #d1cfc7;
+            position: relative; transform: rotate(0.5deg);
+        }
+        .news-meta-top { display: flex; justify-content: space-between; font-size: 0.7rem; font-weight: 800; border-bottom: 3px solid #1a1a1a; padding-bottom: 4px; margin-bottom: 12px; letter-spacing: 1px; }
+        .news-header-main h2 { font-family: 'Times New Roman', serif; font-size: 3.8rem; margin: 15px 0; text-align: center; font-weight: 900; letter-spacing: -1px; text-transform: uppercase; }
+        .news-meta-sub { display: flex; justify-content: space-around; font-size: 0.7rem; font-weight: 900; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; padding: 6px 0; margin-bottom: 25px; }
+        .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
+        .news-text { font-family: 'Georgia', serif; font-size: 0.95rem; line-height: 1.5; text-align: justify; color: #333; }
+        .news-text h3 { font-family: 'Helvetica', sans-serif; font-weight: 900; font-size: 1.5rem; margin-top: 0; line-height: 1.1; }
+        .news-grid img { width: 100%; border: 5px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+        /* --- Poetry Box --- */
+        .poetry-box {
+            background: var(--parchment); padding: 40px; margin: 40px 0; border: 2px dashed var(--news-blue);
+            box-shadow: 10px 10px 0px var(--soft-blue); color: #444; transform: rotate(-0.5deg);
+            pointer-events: all; width: 100%; max-width: 650px; min-height: 380px; display: flex; flex-direction: column;
+        }
+        .poetry-box h3 { font-family: 'Bowlby One SC'; color: var(--hot-pink); margin-top: 0; font-size: 1.8rem; }
+        #poem-display { font-family: 'Dancing Script', cursive; min-height: 150px; margin: 25px 0; font-size: 1.5rem; line-height: 1.5; color: #333; overflow-y: auto; max-height: 300px; padding-right: 10px; }
+        .gen-btn { background: var(--news-blue); color: white; border: none; padding: 12px 24px; font-family: 'Bowlby One SC'; letter-spacing: 1px; border-radius: 4px; cursor: pointer; transition: 0.3s; width: fit-content; margin-top: auto; }
+        .gen-btn:hover { background: var(--hot-pink); transform: scale(1.05); }
+
+        .btn-group { margin-top: 60px; margin-bottom: 40px; display: flex; flex-wrap: wrap; gap: 20px; position: relative; z-index: 10; }
+        .mag-btn { background: white; color: var(--hot-pink); border: none; padding: 18px 30px; font-family: 'Bowlby One SC'; font-size: 0.9rem; border-radius: 5px; box-shadow: 6px 6px 0 var(--deep-pink); transition: 0.3s; cursor: pointer; pointer-events: all; }
+        .mag-btn:hover { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 var(--deep-pink); }
+
+        .decor-cluster { position: absolute; bottom: 40px; right: 40px; display: flex; flex-direction: column; align-items: flex-end; gap: 25px; pointer-events: none; z-index: 20; }
+        .paris-stamp { background: #fff; border: 2px dashed #b5b5b5; padding: 12px 18px; transform: rotate(12deg) translateX(-10px); text-align: center; color: #888; font-size: 0.65rem; font-weight: 900; box-shadow: 4px 4px 10px rgba(0,0,0,0.05); }
+        .sticky-note { background: #fff1a8; color: #555; padding: 35px 25px 25px 25px; font-family: 'Homemade Apple', cursive; font-size: 0.95rem; width: 210px; transform: rotate(-3deg); box-shadow: 8px 8px 20px rgba(0,0,0,0.1); position: relative; }
+        .sticky-note::before { content: ""; position: absolute; top: -12px; left: 50%; transform: translateX(-50) rotate(1deg); width: 90px; height: 35px; background: var(--tape-color); backdrop-filter: blur(1px); z-index: 2; }
+
+        /* --- Added Polaroid Style --- */
+        .polaroid-pinned {
+            position: absolute; bottom: 60px; left: 40px;
+            background: white; padding: 10px 10px 30px 10px;
+            width: 180px; transform: rotate(-5deg);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid #ddd; z-index: 20;
+        }
+        .polaroid-pinned img { width: 100%; height: 160px; object-fit: cover; border: 1px solid #eee; }
+        .thumbtack {
+            position: absolute; top: -10px; left: 50%;
+            transform: translateX(-50%); width: 20px; height: 20px;
+            background: #ff4d4d; border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3); z-index: 25;
+        }
+        .thumbtack::after {
+            content: ""; position: absolute; top: 50%; left: 50%;
+            width: 8px; height: 8px; background: rgba(255,255,255,0.4);
+            border-radius: 50%; transform: translate(-50%, -50%);
+        }
+
+        /* --- Book Overlays --- */
+        #letter-page, #booklet-page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: none; justify-content: center; align-items: center; transition: 0.5s; }
+        #letter-page { z-index: 4000; background: rgba(0,0,0,0.75); opacity: 0; }
+        .paper { background: var(--parchment); width: 85%; max-width: 600px; padding: 40px 60px; box-shadow: 25px 25px 0 var(--hot-pink); border: 1px solid #dcd1bd; max-height: 80vh; overflow-y: auto; pointer-events: all; }
+        .letter-content { font-family: 'Homemade Apple', cursive; color: #4a4435; line-height: 2.2; font-size: 1.2rem; margin-bottom: 30px;}
+
+        #booklet-page { z-index: 4500; background: rgba(0,0,0,0.9); opacity: 0; }
+        .book-container { background: #fff; width: 90%; max-width: 900px; height: 85vh; display: flex; box-shadow: 0 0 50px rgba(0,0,0,0.7); border-radius: 5px; overflow: hidden; position: relative; pointer-events: all; }
+        .book-left { width: 40%; background: var(--news-blue); padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; border-right: 2px solid rgba(0,0,0,0.2); }
+        .book-right { width: 60%; background: var(--parchment); padding: 50px; position: relative; }
+        .book-body { height: 100%; overflow-y: auto; padding-right: 15px; }
+        .book-title { font-family: 'Bowlby One SC'; font-size: 2.2rem; margin-bottom: 15px; line-height: 1; letter-spacing: -1px; }
+        
+        .poem-entry { margin-bottom: 60px; border-left: 3px solid var(--hot-pink); padding-left: 20px; }
+        .poem-entry h4 { font-family: 'Montserrat'; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: #333; margin-bottom: 5px; font-size: 0.9rem; }
+        .poem-entry .date-label { font-size: 0.7rem; color: var(--hot-pink); font-weight: 700; display: block; margin-bottom: 10px; }
+        .poem-entry p { font-family: 'Homemade Apple', cursive; color: #444; line-height: 2.1; font-size: 1rem; white-space: pre-wrap; }
+        
+        .close-book-circle { position: absolute; top: -15px; right: -15px; width: 45px; height: 45px; background: white; border: 3px solid var(--hot-pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--hot-pink); font-weight: bold; cursor: pointer; z-index: 100; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: 0.3s; }
+        .close-book-circle:hover { transform: scale(1.1) rotate(90deg); background: var(--hot-pink); color: white; }
+
+        /* --- Cake Section --- */
+        #cake-section { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 5000; display: none; justify-content: center; align-items: center; opacity: 0; transition: 0.5s; background: radial-gradient(circle, var(--soft-blue), #82c6e8); flex-direction: column; pointer-events: none; }
+        #cake-section.active { pointer-events: all; display: flex; }
+        #emoji-cake { font-size: 180px; cursor: pointer; }
+        .vertical-strip { writing-mode: vertical-rl; text-orientation: mixed; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC'; font-size: 0.8rem; letter-spacing: 5px; color: rgba(255,255,255,0.6); border-right: 1px solid rgba(255,255,255,0.3); white-space: nowrap; }
+        /* --- Floating Bow Decor --- */
+.bow-decor {
+    position: fixed;
+    font-size: 20px;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 5;
+    filter: drop-shadow(2px 3px 0 rgba(0,0,0,0.12));
+    animation: bowFloat 7s ease-in-out infinite;
+}
+
+
+
+
+.bow-decor.slow {
+    animation-duration: 10s;
+}
+
+.bow-decor.fast {
+    animation-duration: 5.5s;
+}
+
+@keyframes bowFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-22px) rotate(3deg);
+    }
+}
+
+
+/* ============================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================ */
+
+/* Tablets and smaller laptops */
+@media screen and (max-width: 1024px) {
+    .magazine-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+    
+    .photo-stack {
+        padding: 30px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+    
+    .spotify-mini, .exchange-card, .attribute-list {
+        width: 100%;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .main-content {
+        padding: 40px 30px;
+    }
+    
+    .vertical-strip {
+        display: none;
+    }
+    
+    #cursor-dot, #cursor-outline {
+        display: none;
+    }
+    
+    * {
+        cursor: auto !important;
+    }
+
+    .polaroid-pinned { display: none; } /* Hide on small screens to avoid overlap */
+}
+
+/* Mobile devices */
+@media screen and (max-width: 768px) {
+    .photo-stack {
+        padding: 20px;
+        gap: 30px;
+    }
+    
+    .main-content {
+        padding: 30px 20px;
+        padding-bottom: 200px;
+    }
+    
+    h1 {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        text-shadow: 4px 4px 0 var(--hot-pink);
+    }
+    
+    .news-header-main h2 {
+        font-size: 2.5rem;
+    }
+    
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .poetry-box {
+        padding: 25px;
+        max-width: 100%;
+    }
+    
+    .poetry-box h3 {
+        font-size: 1.4rem;
+    }
+    
+    #poem-display {
+        font-size: 1.2rem;
+    }
+    
+    .btn-group {
+        margin-top: 40px;
+    }
+    
+    .decor-cluster {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: 30px;
+    }
+    
+    .paper {
+        width: 90%;
+        padding: 30px 25px;
+        max-width: 100%;
+        box-shadow: 15px 15px 0 var(--hot-pink);
+    }
+    
+    .letter-content {
+        font-size: 1rem;
+        line-height: 2;
+    }
+    
+    .book-container {
+        width: 95%;
+        height: 90vh;
+        flex-direction: column;
+    }
+    
+    .book-left {
+        width: 100%;
+        padding: 30px;
+        border-right: none;
+        border-bottom: 2px solid rgba(0,0,0,0.2);
+    }
+    
+    .book-right {
+        width: 100%;
+        padding: 30px 25px;
+    }
+    
+    .book-title {
+        font-size: 1.8rem;
+    }
+    
+    #emoji-cake {
+        font-size: 120px;
+    }
+    
+    .hero-img {
+        border: 10px solid white;
+        box-shadow: 10px 10px 0 var(--hot-pink);
+    }
+    
+    .newspaper-article {
+        padding: 25px;
+    }
+    
+    .bow-decor {
+        font-size: 16px;
+    }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+    .enter-card {
+        padding: 25px 20px;
+        max-width: 90%;
+    }
+    
+    #enter-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    
+    .photo-stack {
+        padding: 15px;
+        gap: 25px;
+    }
+    
+    .mini-post {
+        padding: 10px;
+    }
+    
+    .main-content {
+        padding: 25px 15px;
+        padding-bottom: 150px;
+    }
+    
+    h1 {
+        font-size: clamp(2rem, 7vw, 3rem);
+        text-shadow: 3px 3px 0 var(--hot-pink);
+    }
+    
+    .news-header-main h2 {
+        font-size: 2rem;
+    }
+    
+    .newspaper-article {
+        padding: 20px 15px;
+    }
+    
+    .news-text {
+        font-size: 0.85rem;
+    }
+    
+    .news-text h3 {
+        font-size: 1.2rem;
+    }
+    
+    .poetry-box {
+        padding: 20px 15px;
+        min-height: 320px;
+    }
+    
+    .poetry-box h3 {
+        font-size: 1.2rem;
+    }
+    
+    #poem-display {
+        font-size: 1.1rem;
+        min-height: 120px;
+    }
+    
+    .mag-btn {
+        padding: 15px 25px;
+        font-size: 0.85rem;
+    }
+    
+    .sticky-note {
+        width: 180px;
+        font-size: 0.85rem;
+        padding: 30px 20px 20px;
+    }
+    
+    .paper {
+        padding: 25px 20px;
+        box-shadow: 10px 10px 0 var(--hot-pink);
+    }
+    
+    .letter-content {
+        font-size: 0.95rem;
+        line-height: 1.9;
+    }
+    
+    .book-left {
+        padding: 25px 20px;
+    }
+    
+    .book-right {
+        padding: 25px 20px;
+    }
+    
+    .book-title {
+        font-size: 1.5rem;
+    }
+    
+    .poem-entry {
+        margin-bottom: 40px;
+    }
+    
+    .poem-entry p {
+        font-size: 0.9rem;
+    }
+    
+    #emoji-cake {
+        font-size: 100px;
+    }
+    
+    .hero-img {
+        border: 8px solid white;
+        box-shadow: 8px 8px 0 var(--hot-pink);
+    }
+    
+    .spotify-mini {
+        padding: 15px;
+    }
+    
+    .album-art {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .song-title {
+        font-size: 0.85rem;
+    }
+    
+    .artist-name {
+        font-size: 0.7rem;
+    }
+    
+    #play-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+    }
+    
+    .exchange-card {
+        padding: 15px;
+    }
+    
+    #countdown {
+        font-size: 1.2rem;
+    }
+    
+    .attribute-list {
+        padding: 20px;
+    }
+    
+    .attribute-list h3 {
+        font-size: 0.8rem;
+    }
+    
+    .bow-decor {
+        font-size: 14px;
+    }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 360px) {
+    h1 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+    }
+    
+    .news-header-main h2 {
+        font-size: 1.7rem;
+    }
+    
+    #emoji-cake {
+        font-size: 80px;
+    }
+    
+    .book-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* Landscape mode for mobile */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .main-content {
+        padding-bottom: 100px;
+    }
+    
+    .paper {
+        max-height: 70vh;
+    }
+    
+    .book-container {
+        height: 80vh;
+    }
+    
+    #emoji-cake {
+        font-size: 80px;
+    }
+}
+
