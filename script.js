@@ -140,9 +140,41 @@
         function showCake() { const cs = document.getElementById("cake-section"); cs.classList.add('active'); setTimeout(() => cs.style.opacity = "1", 10); }
         function closeCake() { const cs = document.getElementById("cake-section"); cs.style.opacity = "0"; setTimeout(() => { cs.classList.remove('active'); }, 500); }
         function cutCake() { 
-            const cake = document.getElementById('emoji-cake');
-            if(cake.innerText === "🎂") { cake.innerText = "🍰"; createConfetti(); }
-        }
+    const cake = document.getElementById('emoji-cake');
+    const form = document.getElementById('wish-form');
+    const instruction = document.getElementById('cake-instruction');
+
+    if(cake.innerText === "🎂") { 
+        cake.innerText = "🍰"; 
+        createConfetti();
+        
+        // Reveal the form after a short delay
+        setTimeout(() => {
+            instruction.innerText = "WHISPER IT...";
+            form.style.display = "block";
+            form.style.opacity = "0";
+            setTimeout(() => form.style.opacity = "1", 10);
+        }, 1000);
+    }
+}
+
+// Handle Form Submission without leaving the page
+const wishForm = document.getElementById('wish-form');
+wishForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(wishForm);
+    const response = await fetch(wishForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+    });
+    
+    if (response.ok) {
+        wishForm.style.display = 'none';
+        document.getElementById('cake-instruction').style.display = 'none';
+        document.getElementById('thank-you-msg').style.display = 'block';
+    }
+});
 
         function createConfetti() {
             for (let i = 0; i < 50; i++) {
