@@ -99,17 +99,30 @@
             }, 600);
         }
 
-        const targetDate = new Date("March 20, 2026 00:00:00").getTime();
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const diff = targetDate - now;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${mins}m ${secs}s`;
-        }
-        setInterval(updateCountdown, 1000);
+        const parisDate = new Date("March 20, 2026 00:00:00").getTime();
+const nextBdayDate = new Date("February 8, 2027 00:00:00").getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+
+    // Paris Countdown
+    const diffParis = parisDate - now;
+    const d1 = Math.floor(diffParis / (1000 * 60 * 60 * 24));
+    const h1 = Math.floor((diffParis % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m1 = Math.floor((diffParis % (1000 * 60 * 60)) / (1000 * 60));
+    const s1 = Math.floor((diffParis % (1000 * 60)) / 1000);
+    document.getElementById("countdown").innerHTML = `${d1}d ${h1}h ${m1}m ${s1}s`;
+
+    // 2027 Birthday Countdown
+    const diffBday = nextBdayDate - now;
+    const d2 = Math.floor(diffBday / (1000 * 60 * 60 * 24));
+    const h2 = Math.floor((diffBday % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m2 = Math.floor((diffBday % (1000 * 60 * 60)) / (1000 * 60));
+    const s2 = Math.floor((diffBday % (1000 * 60)) / 1000);
+    document.getElementById("bday-2027").innerHTML = `${d2}d ${h2}h ${m2}m ${s2}s`;
+}
+// Keep the interval as is
+setInterval(updateCountdown, 1000);
 
         function startApp() {
             audio.play().then(() => { playBtn.innerText = "II"; }).catch(() => {});
