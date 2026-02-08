@@ -11,8 +11,8 @@
 
     <div id="overlay">
         <div class="enter-card">
-            <p style="color: #888; letter-spacing: 2px;">FEB 08, 2026</p>
-            <h2 style="font-family: 'Dancing Script'; font-size: 2.5rem; color: #444;">Salut, Devanshi.</h2>
+            <p style="color: #888; letter-spacing: 2px;">FEB 08</p>
+            <h2 style="font-family: 'Dancing Script'; font-size: 2.5rem; color: #444;">Bonjour, Devanshi.</h2>
             <button id="enter-btn" onclick="startApp()">POUR TOI ✨</button>
         </div>
     </div>
@@ -50,7 +50,7 @@
             </div>
 
             <div class="attribute-list">
-                <h3>15 WAYS TO DESCRIBE YOU</h3>
+                <h3>15 WAYS TO DESCRIBE DEVANSHI</h3>
                 <div class="attribute-item"><span class="attr-num">01</span> Cute</div>
                 <div class="attribute-item"><span class="attr-num">02</span> Bully</div>
                 <div class="attribute-item"><span class="attr-num">03</span> Smart</div>
@@ -85,8 +85,8 @@
                 <div class="news-meta-sub"><span>LATE CITY EDITION</span><span>VOL. XV ... NO. 08</span><span>ONE WISH</span></div>
                 <div class="news-grid">
                     <div class="news-text">
-                        <h3>RENOWNED POET - DEVANSHI TURNS 15; CITY CELEBRATES!</h3>
-                        <p><b>DELHI, IN</b> In today's special edition, we are thrilled to bring this news to everyone, the very important and special occasion of Devanshi's FIFTEENTH Birthday- a day of thanking the presence of this beautiful, smart, fun soul that brightens everyone's day. This event marks another milestone and a great year passed, filled with personal growth, achieved dreams, bright smiles and overcome problems.</p>
+                        <h3>RENOWNED POET DEVANSHI TURNS 15; CITY CELEBRATES!</h3>
+                        <p><b>DELHI, IN</b> In today's special edition, we are thrilled to bring this news to everyone, the very important and special occasion of Devanshi's FIFTEENTH Birthday- a day of thanking the presence of this beautiful, smart, fun soul that brightens everyone's day. This event marks another milestone and a great year passed, filled with personal growth, achieved dreams, bright smiles and overcome fears.</p>
                     </div>
                     <div><img src="unnamed (4).jpg"></div>
                 </div>
@@ -122,12 +122,12 @@
             <div class="letter-content">
                 Dear Devanshi,<br><br>
                 Happy Birthday!<br><br>
-                You’re turning 15 this year, survived 15 years, wow. I know boards are right around the corner, but today should still 100% feel like your day. Even if it’s just for a bit, I hope you let yourself enjoy it and not overthink everything else. It's your birthday, force yourself to be excited, haha<br><br>
+                You’re turning 15 this year, which is kind of crazy, but in a good way. I know boards are right around the corner, but today should still 100% feel like your day. Even if it’s just for a bit, I hope you let yourself enjoy it and not overthink everything else.<br><br>
                 I actually wanted to give you something on your actual birthday, but since we aren’t meeting today, that wasn’t really possible. So I ended up making this instead. I just wanted it to be something different, something you could look at now and still feel excited about later, after boards are done.<br><br>
                 I didn’t want to write the usual birthday stuff because that never really fits you. You have this way of being very much yourself without trying too hard, even when things are hectic. It’s subtle, but it makes a difference. You probably don’t notice it much, but it’s the kind of thing that makes everything around you feel a little lighter for you and for the people around you.<br><br>
-                I know I can’t give you the golden retriever in a Coach bag today or that cow-looking ice-cream cup, but I haven’t forgotten about those. One day, that’s happening for sure. Also, there might be another little surprise waiting for you after boards, so stay excited for that.<br><br>
-                There’s also a small booklet on the website under “Your Works.” I’m not even sure why I felt like adding it, but it felt right. Your older creations are genuinely some of my favourites, and I thought they deserved their own cool space, made this just so you can go through your own works, maybe that poet will rise again, haha.<br><br>
-                Anyway, I just wanted you to know that I’m glad I met you. And if this year ever feels messy or overwhelming, you don’t have to deal with it alone. I'm with you, always.<br><br>
+                I know I can’t give you the golden retriever in a Coach bag today or that cow-looking ice-cream cup, but I haven’t forgotten about those. One day, that’s happening for sure.<br><br>
+                There’s also a small booklet on the website under “Your Works.” I’m not even sure why I felt like adding it, but it felt right. Your older creations are genuinely some of my favourites, and I thought they deserved their own space.<br><br>
+                Anyway, I just wanted you to know that I’m glad I met you. And if this year ever feels messy or overwhelming, you don’t have to deal with it alone. I’ve got your back, always.<br><br>
                 Hope you have a really good day. You deserve that.<br><br>
                 Love,<br>
                 Chandravadan
@@ -152,15 +152,23 @@
 
     <div id="cake-section">
         <div class="cake-wrap">
-            <h1 style="font-family: 'Bowlby One SC'; color: white;">MAKE A WISH!</h1>
-            <h4 style="font-family: 'Bowlby One SC'; color: white;">Click on the cake to cut!</h4>
-            <div id="emoji-cake" onclick="cutCake()">🎂</div>
-            <button class="mag-btn" style="margin-top: 40px;" onclick="closeCake()">EXIT PARTY</button>
-        </div>
+    <h1 id="cake-instruction" style="font-family: 'Bowlby One SC'; color: white;">MAKE A WISH!</h1>
+    <div id="emoji-cake" onclick="cutCake()">🎂</div>
+
+    <form id="wish-form" action="https://formspree.io/f/mgolejgy" method="POST" style="display: none; margin-top: 20px; width: 100%; max-width: 400px;">
+        <textarea name="wish" placeholder="Type your secret wish here..." required 
+            style="width: 100%; height: 100px; padding: 15px; border-radius: 10px; border: none; font-family: 'Montserrat'; margin-bottom: 15px;"></textarea>
+        <button type="submit" class="mag-btn" style="width: 100%;">SEND WISH TO THE STARS ✨</button>
+    </form>
+
+    <p id="thank-you-msg" style="display: none; font-family: 'Dancing Script'; font-size: 1.5rem; color: white; margin-top: 20px;">
+        Your wish has been sent. I'll do my best to make it come true. :)
+    </p>
+
+    <button class="mag-btn" style="margin-top: 40px;" onclick="closeCake()">EXIT PARTY</button>
+</div>
     </div>
 
     <script src="script.js"></script>
 </body>
-
 </html>
-
