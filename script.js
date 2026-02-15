@@ -227,4 +227,25 @@ wishForm.addEventListener('submit', async (e) => {
             document.body.appendChild(ribbon);
         });
 
+        // SECRET DECODER INTERACTION
+const decoderBox = document.getElementById('decoder-box');
+const hiddenMsg = decoderBox.querySelector('.hidden-message');
+
+decoderBox.addEventListener('mousemove', (e) => {
+    const rect = decoderBox.getBoundingClientRect();
+    // Calculate mouse position relative to the black box
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Update the "flashlight" position
+    hiddenMsg.style.setProperty('--mouse-x', x + 'px');
+    hiddenMsg.style.setProperty('--mouse-y', y + 'px');
+});
+
+// Hide the light when mouse leaves the box
+decoderBox.addEventListener('mouseleave', () => {
+    hiddenMsg.style.setProperty('--mouse-x', '-100%');
+    hiddenMsg.style.setProperty('--mouse-y', '-100%');
+});
+
         
