@@ -248,4 +248,37 @@ decoderBox.addEventListener('mouseleave', () => {
     hiddenMsg.style.setProperty('--mouse-y', '-100%');
 });
 
+function checkExchangeNotification() {
+    const target = new Date("March 20, 2026 00:00:00").getTime();
+    const now = new Date().getTime();
+    const diff = target - now;
+    
+    // Calculate days remaining
+    const daysLeft = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+    // If we are within the 7-day window
+    if (daysLeft <= 7 && daysLeft > 0) {
+        showInSiteNotify(daysLeft);
+    }
+}
+
+function showInSiteNotify(days) {
+    const notifyDiv = document.createElement('div');
+    notifyDiv.className = 'exchange-notify';
+    notifyDiv.innerHTML = `
+        <span style="font-size: 1.2rem;">✈️</span>
+        <div>
+            <strong>${days} DAYS TO GO!</strong><br>
+            <small>Paris is waiting for us...</small>
+        </div>
+    `;
+    document.body.appendChild(notifyDiv);
+
+    // Slide it in after a short delay
+    setTimeout(() => notifyDiv.classList.add('show-notify'), 1000);
+}
+
+// Call it on load
+checkExchangeNotification();
+
         
