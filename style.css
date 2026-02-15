@@ -624,4 +624,67 @@
     }
 }
 
+/* --- Secret Decoder Styles --- */
+.decoder-outer-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+    transform: rotate(-1deg); /* Slight tilt to match your aesthetic */
+    z-index: 10;
+}
 
+.decoder-label {
+    font-family: 'Bowlby One SC', sans-serif;
+    font-size: 0.65rem;
+    color: var(--news-blue);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    background: var(--tape-color);
+    padding: 2px 10px;
+}
+
+.decoder-box {
+    width: 240px;
+    height: 120px;
+    background: #111; /* Pitch black background */
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    cursor: crosshair;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px 0px var(--soft-blue);
+    border: 1px solid #333;
+}
+
+.hidden-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: white;
+    text-align: center;
+    line-height: 1.4;
+    padding: 10px;
+    pointer-events: none;
+    user-select: none;
+    
+    /* The Flashlight Effect logic */
+    background: radial-gradient(
+        circle 55px at var(--mouse-x, -100%) var(--mouse-y, -100%), 
+        rgba(255,255,255,1) 0%, 
+        rgba(255,255,255,0) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.decoder-hint {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.55rem;
+    color: #ffffff;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
