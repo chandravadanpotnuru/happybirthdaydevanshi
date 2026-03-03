@@ -743,3 +743,16 @@
     pointer-events: none; /* So it doesn't block scrolling/clicks */
     z-index: 10;
 }
+
+
+.blue-rose-sticker {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 70px;
+    height: auto;
+    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.1)); /* Soft shadow for depth */
+    transform: rotate(-10deg);
+    opacity: 0.9;
+    z-index: 5;
+}
