@@ -757,13 +757,3 @@
     z-index: 5;
 }
 
-.decoder-rose {
-    position: absolute;
-    top: -40px;
-    left: -30px;
-    width: 80px;
-    height: auto;
-    z-index: 10;
-    transform: rotate(-15deg);
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-}
