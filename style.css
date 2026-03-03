@@ -730,3 +730,16 @@
     color: #888;
     font-size: 0.7rem;
 }
+
+.pressed-lily {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 80px; /* Adjust size as needed */
+    height: auto;
+    opacity: 0.8;
+    transform: rotate(15deg);
+    filter: sepia(0.3) contrast(1.1); /* Gives it a vintage feel */
+    pointer-events: none; /* So it doesn't block scrolling/clicks */
+    z-index: 10;
+}
